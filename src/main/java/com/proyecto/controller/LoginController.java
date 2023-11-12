@@ -45,8 +45,8 @@ public class LoginController {
 	@PostMapping("/registro")
 	public String registro(@ModelAttribute Usuario usuario, Model model) {
 
-		// verificar si ese correo esta en la base de datos
 		try {
+			usuario.setId_tipo(2);
 			repoUsu.save(usuario);
 			return "login";
 		} catch (Exception e) {

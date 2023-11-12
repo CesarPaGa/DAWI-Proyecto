@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Mantenimiento Producto</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+	<!--Inicio Barra de Navegacion-->
+	<style>
+		nav {
+			font-size: 15px;
+		}
+
+		#brand {
+			font-family: 'Berkshire Swash';
+			font-size: 30px;
+		}
+	</style>
+	<div style="height: 70px; width: 100%;"></div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+		<div class="container">
+			<a class="navbar-brand logo-font" href="#" id="brand">
+				Ibrahmi
+			</a>
+			<!-- links toggle -->
+			<button class="navbar-toggler order-first" type="button" data-toggle="collapse" data-target="#links"
+				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-bars"></i>
+			</button>
+			<!-- account toggle -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#account"
+				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
+			</button>
+
+			<div class="collapse navbar-collapse" id="links">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Inicio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Peliculas y Series</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							Mantenimientos
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="/mantenimiento/contenido">Peliculas</a>
+							<a class="dropdown-item" href="#">Usuarios</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false">
+							Reportes
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Peliculas</a>
+							<a class="dropdown-item" href="#">Usuarios</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="collapse navbar-collapse" id="account">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">
+							<i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="#">Mis peliculas</a></li>
+					<li class="nav-item"><a class="nav-link" href="/login">Cerar Sesion</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--Fin Barra de Navegacion-->
+	<div class="container">
+		<div class="row">
+			<div class="col-6 col-sm-3">
+				<h1>Mantenimiento de Contenidos</h1>
+				<form action="/guardar" method="post" th:object="${contenido}">
+
+					<div class="form-group">
+						<label for="inputCod">Código</label>
+						<input type="number" th:field="*{id_con}" class="form-control" id="inputCod"
+							placeholder="Código" readonly>
+					</div>
+					<div class="form-group">
+						<label for="inputNom">Nombre</label>
+						<input type="text" th:field="*{nombre}" class="form-control" id="inputNom" placeholder="Nombre">
+					</div>
+					<div class="form-group">
+						<label for="inputNom">Director</label>
+						<input type="text" th:field="*{director}" class="form-control" id="inputNom"
+							placeholder="Nombre">
+					</div>
+					<div class="form-group">
+						<label for="inputNom">Descripcion</label>
+						<input type="text" th:field="*{descripcion}" class="form-control" id="inputNom"
+							placeholder="Nombre">
+					</div>
+					<div class="form-group">
+						<label for="inputNom">Idioma</label>
+						<input type="text" th:field="*{idioma}" class="form-control" id="inputNom" placeholder="Nombre">
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="inputStk">Precio</label>
+							<input type="number" th:field="*{precio}" class="form-control" id="inputStk"
+								placeholder="0">
+						</div>
+						<div class="form-group col-md-4">
+							<label for="inputStk">Publicacion</label>
+							<input type="number" th:field="*{anio_publicacion}" class="form-control" id="inputStk"
+								placeholder="0">
+						</div>
+						<div class="form-group col-md-4">
+							<label for="inputStk">Duracion</label>
+							<input type="number" th:field="*{duracion}" class="form-control" id="inputStk"
+								placeholder="0">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<label for="inputCat">Tipo</label>
+							<select id="inputCat" class="form-control" th:field="*{id_tipo}">
+								<option th:each="c: ${lstTipo}" th:value="${c.id_tipo}" th:text="${c.tipo}"></option>
+							</select>
+
+						</div>
+						<div class="form-group col-md-5">
+							<label for="inputCat">Genero</label>
+							<select id="inputCat" class="form-control" th:field="*{id_genero}">
+								<option th:each="c: ${lstGenero}" th:value="${c.id_genero}" th:text="${c.genero}"></option>
+							</select>
+
+						</div>
+						<div class="form-group col-md-3">
+							<label for="inputStk">Puntuacion</label>
+							<input type="number" th:field="*{puntuacion}" class="form-control" id="inputStk"
+								placeholder="0">
+						</div>
+					</div>
+					<div class="text-center">
+						<div th:text="${mensaje}" th:class="${cssmensaje}" role="alert"></div>
+					</div>
+					<button type="submit" class="btn btn-primary">Guardar</button>
+					<a href="/mantenimiento/contenido" class="btn btn-primary">Limpiar</a>
+					<a href="/reporte" class="btn btn-primary" target="_blank">PDF</a>
+				</form>
+				<div th:text="${mensaje}"></div>
+			</div>
+			<div class="col-6 col-sm-9">
+				<h3></h3>
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre</th>
+							<th>Director</th>
+							<th>Descripcion</th>
+							<th>Idioma</th>
+							<th>Precio</th>
+							<th>Puntuacion</th>
+							<th>Duracion</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="c : ${lstContenido}">
+							<td th:text="${c.id_con}"></td>
+							<td th:text="${c.nombre}"></td>
+							<td th:text="${c.director}"></td>
+							<td th:text="${c.descripcion}"></td>
+							<td th:text="${c.idioma}"></td>
+							<td th:text="${c.precio}"></td>
+							<td th:text="${c.puntuacion}"></td>
+							<td th:text="${c.duracion}"></td>
+							<td style="min-width: 116px;">
+								<a th:href="@{/editar/}+${c.id_con}" class="btn btn-warning">Edit</a>
+								<a th:href="@{/eliminar/}+${c.id_con}" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el Contenido?');">Delete</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+</html>

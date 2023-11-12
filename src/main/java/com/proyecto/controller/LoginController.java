@@ -43,13 +43,11 @@ public class LoginController {
 	}
 
 	@PostMapping("/registro")
-	public String registro(@ModelAttribute Usuario usuario , Model model) {
+	public String registro(@ModelAttribute Usuario usuario, Model model) {
 
 		// verificar si ese correo esta en la base de datos
 		try {
-			System.out.println(usuario);
 			repoUsu.save(usuario);
-			System.out.print(usuario);
 			return "login";
 		} catch (Exception e) {
 			// TODO: handle exception

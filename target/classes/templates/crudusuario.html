@@ -83,75 +83,41 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6 col-sm-3">
-				<h1>Mantenimiento de Contenidos</h1>
-				<form action="/guardar" method="post" th:object="${contenido}">
+				<h1>Mantenimiento de Usuarios</h1>
+				<form action="/guardaruser" method="post" th:object="${usuario}">
 
 					<div class="form-group">
 						<label for="inputCod">Código</label>
-						<input type="number" th:field="*{id_con}" class="form-control" id="inputCod"
+						<input type="number" th:field="*{id_usuario}" class="form-control" id="inputCod"
 							placeholder="Código" readonly>
 					</div>
 					<div class="form-group">
 						<label for="inputNom">Nombre</label>
-						<input type="text" th:field="*{nombre}" class="form-control" id="inputNom" placeholder="Ingrese su Nombre">
+						<input type="text" th:field="*{nombres}" class="form-control" id="inputNom"
+							placeholder="Ingresa tu Nombre">
 					</div>
 					<div class="form-group">
-						<label for="inputNom">Director</label>
-						<input type="text" th:field="*{director}" class="form-control" id="inputNom"
-							placeholder="Ingrese el Director">
+						<label for="inputNom">Usuario</label>
+						<input type="text" th:field="*{usua}" class="form-control" id="inputNom"
+							placeholder="Ingresa tu Usuario">
 					</div>
 					<div class="form-group">
-						<label for="inputNom">Descripcion</label>
-						<input type="text" th:field="*{descripcion}" class="form-control" id="inputNom"
-							placeholder="Ingrese la Descripcion">
+						<label for="inputNom">Cave</label>
+						<input type="text" th:field="*{clave}" class="form-control" id="inputNom"
+							placeholder="Ingresa tu Clave">
 					</div>
 					<div class="form-group">
-						<label for="inputNom">Idioma</label>
-						<input type="text" th:field="*{idioma}" class="form-control" id="inputNom" placeholder="Ingrese el Idioma">
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<label for="inputStk">Precio</label>
-							<input type="number" th:field="*{precio}" class="form-control" id="inputStk"
-								placeholder="0">
-						</div>
-						<div class="form-group col-md-4">
-							<label for="inputStk">Publicacion</label>
-							<input type="number" th:field="*{anio_publicacion}" class="form-control" id="inputStk"
-								placeholder="0">
-						</div>
-						<div class="form-group col-md-4">
-							<label for="inputStk">Duracion</label>
-							<input type="number" th:field="*{duracion}" class="form-control" id="inputStk"
-								placeholder="0">
-						</div>
-					</div>
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<label for="inputCat">Tipo</label>
-							<select id="inputCat" class="form-control" th:field="*{id_tipo}">
-								<option th:each="c: ${lstTipo}" th:value="${c.id_tipo}" th:text="${c.tipo}"></option>
-							</select>
+						<label for="inputCat">Tipo</label>
+						<select id="inputCat" class="form-control" th:field="*{id_tipo}">
+							<option th:each="c: ${lstTipoUser}" th:value="${c.id_tipo}" th:text="${c.tipo}"></option>
+						</select>
 
-						</div>
-						<div class="form-group col-md-5">
-							<label for="inputCat">Genero</label>
-							<select id="inputCat" class="form-control" th:field="*{id_genero}">
-								<option th:each="c: ${lstGenero}" th:value="${c.id_genero}" th:text="${c.genero}"></option>
-							</select>
-
-						</div>
-						<div class="form-group col-md-3">
-							<label for="inputStk">Puntuacion</label>
-							<input type="number" th:field="*{puntuacion}" class="form-control" id="inputStk"
-								placeholder="0">
-						</div>
 					</div>
 					<div class="text-center">
 						<div th:text="${mensaje}" th:class="${cssmensaje}" role="alert"></div>
 					</div>
 					<button type="submit" class="btn btn-primary">Guardar</button>
-					<a href="/mantenimiento/contenido" class="btn btn-primary">Limpiar</a>
+					<a href="/mantenimiento/usuario" class="btn btn-primary">Limpiar</a>
 					<a href="/reporte" class="btn btn-primary" target="_blank">PDF</a>
 				</form>
 				<div th:text="${mensaje}"></div>
@@ -162,29 +128,23 @@
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Nombre</th>
-							<th>Director</th>
-							<th>Descripcion</th>
-							<th>Idioma</th>
-							<th>Precio</th>
-							<th>Puntuacion</th>
-							<th>Duracion</th>
-							<th>Acciones</th>
+							<th>Nombres</th>
+							<th>Usuario</th>
+							<th>Clave</th>
+							<th>Tipo</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="c : ${lstContenido}">
-							<td th:text="${c.id_con}"></td>
-							<td th:text="${c.nombre}"></td>
-							<td th:text="${c.director}"></td>
-							<td th:text="${c.descripcion}"></td>
-							<td th:text="${c.idioma}"></td>
-							<td th:text="${c.precio}"></td>
-							<td th:text="${c.puntuacion}"></td>
-							<td th:text="${c.duracion}"></td>
+						<tr th:each="c : ${lstUsuarios}">
+							<td th:text="${c.id_usuario}"></td>
+							<td th:text="${c.nombres}"></td>
+							<td th:text="${c.usua}"></td>
+							<td th:text="${c.clave}"></td>
+							<td th:text="${c.id_tipo}"></td>
 							<td style="min-width: 116px;">
-								<a th:href="@{/editar/}+${c.id_con}" class="btn btn-warning">Edit</a>
-								<a th:href="@{/eliminar/}+${c.id_con}" class="btn btn-danger" onclick="return confirm('¿Está seguro de eliminar el Contenido?');">Delete</a>
+								<a th:href="@{/editaruser/}+${c.id_usuario}" class="btn btn-warning">Edit</a>
+								<a th:href="@{/eliminaruser/}+${c.id_usuario}" class="btn btn-danger"
+									onclick="return confirm('¿Está seguro de eliminar el Usuario?');">Delete</a>
 							</td>
 						</tr>
 					</tbody>

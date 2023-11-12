@@ -28,7 +28,6 @@ public class ContenidoController {
 		model.addAttribute("lstContenido", repoContenido.findAll());
 		model.addAttribute("lstTipo", repoTipo.findAll());
 		model.addAttribute("lstGenero", repoGenero.findAll());
-		System.out.println(repoContenido.findAll());
 		return "crudcontenido";
 	}
 	@GetMapping("/editar/{id_con}")

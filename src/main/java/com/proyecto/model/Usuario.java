@@ -10,9 +10,9 @@ import lombok.Data;
 @Data
 public class Usuario {
 	@Id
-	private int idUsuario ;
+	private int id_usuario ;
 	private String nombres ;
 	private String usua ;
 	private String clave ;
-	private int idTipo  ;
+	private int id_tipo  ;
 }

@@ -56,21 +56,21 @@ VALUES ('The Mandalorian', 'Jon Favreau', 'Serie de ciencia ficción y western',
 
 /*	Usuarios	*/
 CREATE TABLE tb_tipo_user (
-idTipo int primary key auto_increment,
+id_tipo int primary key auto_increment,
 tipo VARCHAR(255) not null
 );
 
 CREATE TABLE tb_usuario (
-idUsuario INT PRIMARY KEY auto_increment,
+id_usuario INT PRIMARY KEY auto_increment,
 nombres VARCHAR(255) not null,
 usua VARCHAR(255) not null unique,
 clave VARCHAR(255) not null,
-idTipo int not null default '2',
-foreign key (idTipo) references tb_tipo_user (idTipo)
+id_tipo int not null default '2',
+foreign key (id_tipo) references tb_tipo_user (id_tipo)
 );
 
 insert into tb_tipo_user values (1, 'Administrador');
 insert into tb_tipo_user values (2, 'cliente');
-INSERT INTO tb_usuario (idUsuario, nombres, usua, clave, idTipo) 
+INSERT INTO tb_usuario (id_usuario, nombres, usua, clave, id_tipo) 
 VALUES (null, 'Admin', 'Admin', '123', 2);
 

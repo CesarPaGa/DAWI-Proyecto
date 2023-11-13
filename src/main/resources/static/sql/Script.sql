@@ -74,3 +74,27 @@ insert into tb_tipo_user values (2, 'cliente');
 INSERT INTO tb_usuario (id_usuario, nombres, usua, clave, id_tipo) 
 VALUES (null, 'Admin', 'Admin', '123', 2);
 
+
+/*Ventas*/
+CREATE TABLE systemproyect.tb_venta (
+    id_ven INT NOT null AUTO_INCREMENT,
+    fec_compra DATETIME NOT NULL,
+    id_con INT NOT NULL,
+    nombre varchar(100) NOT NULL,
+    precio DOUBLE NOT NULL,
+    id_tipo INT NOT NULL,
+    id_genero INT NOT NULL,
+    CONSTRAINT tb_venta_pk PRIMARY KEY (id_ven),
+    CONSTRAINT tb_venta_FK FOREIGN KEY (id_con) REFERENCES systemproyect.tb_contenido(id_con),
+    CONSTRAINT tb_venta_FK_1 FOREIGN KEY (id_tipo) REFERENCES systemproyect.tb_tipo(id_tipo),
+    CONSTRAINT tb_venta_FK_2 FOREIGN KEY (id_genero) REFERENCES systemproyect.tb_genero(id_genero)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+
+INSERT INTO systemproyect.tb_venta
+(id_ven, fec_compra, id_con, nombre, precio, id_tipo, id_genero)
+VALUES(NULL, '2023-11-10 01:55:04', 3, 'Jurassic Park', 12.99, 2, 3);
+

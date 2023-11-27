@@ -66,7 +66,7 @@ nombres VARCHAR(255) not null,
 usua VARCHAR(255) not null unique,
 clave VARCHAR(255) not null,
 id_tipo int not null default '2',
-foreign key (id_tipo) references tb_tipo_user (id_tipo)
+foreign key (id_tipo) references tb_tipo_user(id_tipo)
 );
 
 insert into tb_tipo_user values (1, 'Administrador');
@@ -77,24 +77,50 @@ VALUES (null, 'Admin', 'Admin', '123', 2);
 
 /*Ventas*/
 CREATE TABLE systemproyect.tb_venta (
-    id_ven INT NOT null AUTO_INCREMENT,
-    fec_compra DATETIME NOT NULL,
-    id_con INT NOT NULL,
-    nombre varchar(100) NOT NULL,
-    precio DOUBLE NOT NULL,
-    id_tipo INT NOT NULL,
-    id_genero INT NOT NULL,
-    CONSTRAINT tb_venta_pk PRIMARY KEY (id_ven),
-    CONSTRAINT tb_venta_FK FOREIGN KEY (id_con) REFERENCES systemproyect.tb_contenido(id_con),
-    CONSTRAINT tb_venta_FK_1 FOREIGN KEY (id_tipo) REFERENCES systemproyect.tb_tipo(id_tipo),
-    CONSTRAINT tb_venta_FK_2 FOREIGN KEY (id_genero) REFERENCES systemproyect.tb_genero(id_genero)
+    id_venta CHAR(5) PRIMARY KEY,
+    contenido_id INT,
+	fecha_registro date NOT NULL,
+	total DECIMAL(10,2) NOT NULL,
+	usuario_id INT,
+	CONSTRAINT ventas_fk1 FOREIGN KEY(contenido_id) REFERENCES tb_Contenido(id_con),
+    CONSTRAINT ventas_fk2 FOREIGN KEY(usuario_id) REFERENCES tb_usuario(id_usuario),
+	constraint ventas_check CHECK (fecha_registro>'2018-01-01')
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_0900_ai_ci;
 
+/*Detalle Ventas*/
 
-INSERT INTO systemproyect.tb_venta
-(id_ven, fec_compra, id_con, nombre, precio, id_tipo, id_genero)
-VALUES(NULL, '2023-11-10 01:55:04', 3, 'Jurassic Park', 12.99, 2, 3);
+CREATE TABLE systemproyect.tb_detalle_venta (
+	id_detalle INT auto_increment NOT NULL,
+	venta_id CHAR(5) NOT NULL,
+	contenido_id INT NOT NULL,
+	cantidad INT NULL,
+	precio DECIMAL(10,2) NOT NULL,
+	CONSTRAINT tb_detalle_venta_pk PRIMARY KEY (id_detalle),
+	CONSTRAINT tb_detalle_venta_FK FOREIGN KEY (venta_id) REFERENCES systemproyect.tb_venta(id_venta),
+	CONSTRAINT tb_detalle_venta_FK_1 FOREIGN KEY (contenido_id) REFERENCES systemproyect.tb_contenido(id_con)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+-- Insert tabla venta
+INSERT INTO `systemproyect`.`tb_venta`
+(`id_venta`,
+`contenido_id`,
+`fecha_registro`,
+`total`,
+`usuario_id`)
+VALUES
+('A123',2,'2023-11-10',14.99,1),
+('A124',4,'2023-11-10',9.99,1);
+
+
+SELECT * FROM systemproyect.tb_contenido;
+
+select * from tb_venta;
+
+
 

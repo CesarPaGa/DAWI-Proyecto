@@ -1,160 +1,239 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Mantenimiento Producto</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    />
+  </head>
 
-<head>
-	<title>Mantenimiento Producto</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
-</head>
+  <body>
+    <!--Inicio Barra de Navegacion-->
+    <style>
+      nav {
+        font-size: 15px;
+      }
 
-<body>
-	<!--Inicio Barra de Navegacion-->
-	<style>
-		nav {
-			font-size: 15px;
-		}
+      #brand {
+        font-family: "Berkshire Swash";
+        font-size: 30px;
+      }
+    </style>
+    <div style="height: 70px; width: 100%"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container">
+        <a class="navbar-brand logo-font" href="/inicio" id="brand">
+          Ibrahmi
+        </a>
+        <!-- links toggle -->
+        <button
+          class="navbar-toggler order-first"
+          type="button"
+          data-toggle="collapse"
+          data-target="#links"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+        <!-- account toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#account"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
+        </button>
 
-		#brand {
-			font-family: 'Berkshire Swash';
-			font-size: 30px;
-		}
-	</style>
-	<div style="height: 70px; width: 100%;"></div>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-		<div class="container">
-			<a class="navbar-brand logo-font" href="#" id="brand">
-				Ibrahmi
-			</a>
-			<!-- links toggle -->
-			<button class="navbar-toggler order-first" type="button" data-toggle="collapse" data-target="#links"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-bars"></i>
-			</button>
-			<!-- account toggle -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#account"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-			</button>
-
-			<div class="collapse navbar-collapse" id="links">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Inicio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Peliculas y Series</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							Mantenimientos
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="/mantenimiento/contenido">Peliculas</a>
-							<a class="dropdown-item" href="/mantenimiento/usuario">Usuarios</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							Reportes
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Peliculas</a>
-							<a class="dropdown-item" href="#">Usuarios</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="collapse navbar-collapse" id="account">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							<i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Mis peliculas</a></li>
-					<li class="nav-item"><a class="nav-link" href="/login">Cerar Sesion</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!--Fin Barra de Navegacion-->
-	<div class="container">
-		<div class="row">
-			<div class="col-6 col-sm-3">
-				<h1>Mantenimiento de Usuarios</h1>
-				<form action="/guardaruser" method="post" th:object="${usuario}">
-
-					<div class="form-group">
-						<label for="inputCod">Código</label>
-						<input type="number" th:field="*{id_usuario}" class="form-control" id="inputCod"
-							placeholder="Código" readonly>
-					</div>
-					<div class="form-group">
-						<label for="inputNom">Nombre</label>
-						<input type="text" th:field="*{nombres}" class="form-control" id="inputNom"
-							placeholder="Ingresa tu Nombre">
-					</div>
-					<div class="form-group">
-						<label for="inputNom">Usuario</label>
-						<input type="text" th:field="*{usua}" class="form-control" id="inputNom"
-							placeholder="Ingresa tu Usuario">
-					</div>
-					<div class="form-group">
-						<label for="inputNom">Cave</label>
-						<input type="text" th:field="*{clave}" class="form-control" id="inputNom"
-							placeholder="Ingresa tu Clave">
-					</div>
-					<div class="form-group">
-						<label for="inputCat">Tipo</label>
-						<select id="inputCat" class="form-control" th:field="*{id_tipo}">
-							<option th:each="c: ${lstTipoUser}" th:value="${c.id_tipo}" th:text="${c.tipo}"></option>
-						</select>
-
-					</div>
-					<div class="text-center">
-						<div th:text="${mensaje}" th:class="${cssmensaje}" role="alert"></div>
-					</div>
-					<button type="submit" class="btn btn-primary">Guardar</button>
-					<a href="/mantenimiento/usuario" class="btn btn-primary">Limpiar</a>
-					<a href="/reporte" class="btn btn-primary" target="_blank">PDF</a>
-				</form>
-				<div th:text="${mensaje}"></div>
-			</div>
-			<div class="col-6 col-sm-9">
-				<h3></h3>
-				<table class="table text-center">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Nombres</th>
-							<th>Usuario</th>
-							<th>Clave</th>
-							<th>Tipo</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="c : ${lstUsuarios}">
-							<td th:text="${c.id_usuario}"></td>
-							<td th:text="${c.nombres}"></td>
-							<td th:text="${c.usua}"></td>
-							<td th:text="${c.clave}"></td>
-							<td th:text="${c.id_tipo}"></td>
-							<td style="min-width: 116px;">
-								<a th:href="@{/editaruser/}+${c.id_usuario}" class="btn btn-warning">Edit</a>
-								<a th:href="@{/eliminaruser/}+${c.id_usuario}" class="btn btn-danger"
-									onclick="return confirm('¿Está seguro de eliminar el Usuario?');">Delete</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-</body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
-
+        <div class="collapse navbar-collapse" id="links">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Peliculas y Series</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Mantenimientos
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="/mantenimiento/contenido"
+                  >Peliculas</a
+                >
+                <a class="dropdown-item" href="/mantenimiento/usuario"
+                  >Usuarios</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ventas">Ventas</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Reportes
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">Peliculas</a>
+                <a class="dropdown-item" href="#">Usuarios</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="account">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/ventas">
+                <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mis peliculas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Cerar Sesion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Fin Barra de Navegacion-->
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-sm-3">
+          <h1>Mantenimiento de Usuarios</h1>
+          <form action="/guardaruser" method="post" th:object="${usuario}">
+            <div class="form-group">
+              <label for="inputCod">Código</label>
+              <input
+                type="number"
+                th:field="*{id_usuario}"
+                class="form-control"
+                id="inputCod"
+                placeholder="Código"
+                readonly
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputNom">Nombre</label>
+              <input
+                type="text"
+                th:field="*{nombres}"
+                class="form-control"
+                id="inputNom"
+                placeholder="Ingresa tu Nombre"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputNom">Usuario</label>
+              <input
+                type="text"
+                th:field="*{usua}"
+                class="form-control"
+                id="inputNom"
+                placeholder="Ingresa tu Usuario"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputNom">Cave</label>
+              <input
+                type="text"
+                th:field="*{clave}"
+                class="form-control"
+                id="inputNom"
+                placeholder="Ingresa tu Clave"
+              />
+            </div>
+            <div class="form-group">
+              <label for="inputCat">Tipo</label>
+              <select id="inputCat" class="form-control" th:field="*{id_tipo}">
+                <option
+                  th:each="c: ${lstTipoUser}"
+                  th:value="${c.id_tipo}"
+                  th:text="${c.tipo}"
+                ></option>
+              </select>
+            </div>
+            <div class="text-center">
+              <div
+                th:text="${mensaje}"
+                th:class="${cssmensaje}"
+                role="alert"
+              ></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/mantenimiento/usuario" class="btn btn-primary">Limpiar</a>
+            <a href="/reporte" class="btn btn-primary" target="_blank">PDF</a>
+          </form>
+          <div th:text="${mensaje}"></div>
+        </div>
+        <div class="col-6 col-sm-9">
+          <h3></h3>
+          <table class="table text-center">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nombres</th>
+                <th>Usuario</th>
+                <th>Clave</th>
+                <th>Tipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="c : ${lstUsuarios}">
+                <td th:text="${c.id_usuario}"></td>
+                <td th:text="${c.nombres}"></td>
+                <td th:text="${c.usua}"></td>
+                <td th:text="${c.clave}"></td>
+                <td th:text="${c.id_tipo}"></td>
+                <td style="min-width: 116px">
+                  <a
+                    th:href="@{/editaruser/}+${c.id_usuario}"
+                    class="btn btn-warning"
+                    >Edit</a
+                  >
+                  <a
+                    th:href="@{/eliminaruser/}+${c.id_usuario}"
+                    class="btn btn-danger"
+                    onclick="return confirm('¿Está seguro de eliminar el Usuario?');"
+                    >Delete</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 </html>

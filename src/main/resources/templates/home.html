@@ -1,102 +1,163 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+      integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Berkshire Swash"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
-		integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
-</head>
+  <body>
+    <!--Inicio Barra de Navegacion-->
+    <style>
+      nav {
+        font-size: 15px;
+      }
 
-<body>
-	<!--Inicio Barra de Navegacion-->
-	<style>
-		nav {
-			font-size: 15px;
-		}
+      #brand {
+        font-family: "Berkshire Swash";
+        font-size: 30px;
+      }
+    </style>
+    <div style="height: 70px; width: 100%"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container">
+        <a class="navbar-brand logo-font" href="/inicio" id="brand">
+          Ibrahmi
+        </a>
+        <!-- links toggle -->
+        <button
+          class="navbar-toggler order-first"
+          type="button"
+          data-toggle="collapse"
+          data-target="#links"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+        <!-- account toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#account"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
+        </button>
 
-		#brand {
-			font-family: 'Berkshire Swash';
-			font-size: 30px;
-		}
-	</style>
-	<div style="height: 70px; width: 100%;"></div>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-		<div class="container">
-			<a class="navbar-brand logo-font" href="#" id="brand">
-				Ibrahmi
-			</a>
-			<!-- links toggle -->
-			<button class="navbar-toggler order-first" type="button" data-toggle="collapse" data-target="#links"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-bars"></i>
-			</button>
-			<!-- account toggle -->
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#account"
-				aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-			</button>
+        <div class="collapse navbar-collapse" id="links">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Peliculas y Series</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Mantenimientos
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="/mantenimiento/contenido"
+                  >Peliculas</a
+                >
+                <a class="dropdown-item" href="/mantenimiento/usuario"
+                  >Usuarios</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/ventas">Ventas</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Reportes
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="#">Peliculas</a>
+                <a class="dropdown-item" href="#">Usuarios</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="account">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/ventas">
+                <i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Mis peliculas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Cerar Sesion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Fin Barra de Navegacion-->
 
-			<div class="collapse navbar-collapse" id="links">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">Inicio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Peliculas y Series</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							Mantenimientos
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="/mantenimiento/contenido">Peliculas</a>
-							<a class="dropdown-item" href="/mantenimiento/usuario">Usuarios</a>
-						</div>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							Reportes
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Peliculas</a>
-							<a class="dropdown-item" href="#">Usuarios</a>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<div class="collapse navbar-collapse" id="account">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="#">
-							<i class="fa fa-shopping-cart fa-1x" aria-hidden="true"></i>
-						</a>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="#">Mis peliculas</a></li>
-					<li class="nav-item"><a class="nav-link" href="/login">Cerar Sesion</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!--Fin Barra de Navegacion-->
-	
-	<!--Inicio Contenido-->
-	
-	<!--Fin Contenido-->
-</body>
+    <!--Inicio Contenido-->
 
+    <!--Fin Contenido-->
+  </body>
 </html>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
-	integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
-	crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+  integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+  crossorigin="anonymous"
+></script>

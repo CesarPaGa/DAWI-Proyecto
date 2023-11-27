@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.proyecto.model.Venta;
 
-public interface IVentaRepository extends JpaRepository<Venta, Integer> {
+public interface IVentaRepository extends JpaRepository<Venta, String> {
 
 }

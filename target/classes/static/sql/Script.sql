@@ -91,7 +91,7 @@ DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Detalle Ventas*/
-
+/*
 CREATE TABLE systemproyect.tb_detalle_venta (
 	id_detalle INT auto_increment NOT NULL,
 	venta_id CHAR(5) NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE systemproyect.tb_detalle_venta (
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
 COLLATE=utf8mb4_0900_ai_ci;
-
+*/
 -- Insert tabla venta
 INSERT INTO `systemproyect`.`tb_venta`
 (`id_venta`,
@@ -121,6 +121,8 @@ VALUES
 SELECT * FROM systemproyect.tb_contenido;
 
 select * from tb_venta;
+
+SELECT SUM(total) AS total_ventas FROM tb_venta;
 
 
 

@@ -118,7 +118,7 @@
               <a class="nav-link" href="#">Mis peliculas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">Cerar Sesion</a>
+              <a class="nav-link" href="/login">Cerrar Sesion</a>
             </li>
           </ul>
         </div>
@@ -158,11 +158,11 @@
             <div class="form-group">
               <label for="inputFecha">Fecha Registro</label>
               <input
-                type="text"
+                type="date"
                 th:field="*{fecha_registro}"
                 class="form-control"
                 id="inputFecha"
-                placeholder="Ingrese la fecha 2020-02-02"
+                placeholder="Ingrese la fecha 2023-11-02"
               />
             </div>
             <div class="form-group">
@@ -173,7 +173,7 @@
                 class="form-control"
                 id="inputTotal"
                 placeholder="Ingrese el total"
-                step="0.1"
+                step="0.01"
               />
             </div>
             <div class="form-group">
@@ -198,6 +198,12 @@
             <a href="/ventas" class="btn btn-secondary">Limpiar</a>
             <a href="/ventas/reporte" class="btn btn-info" target="_blank"
               >Pagar</a
+            >
+            <a
+              href="/ventas/todo"
+              class="btn btn-danger ml-5 mt-3"
+              onclick="return confirm('¿Está seguro de eliminar toda la tabla?');"
+              >Borrar todo</a
             >
           </form>
           <div th:text="${mensaje}"></div>

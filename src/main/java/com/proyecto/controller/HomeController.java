@@ -10,6 +10,7 @@ public class HomeController {
 	public String df(Model model) {
 		return "redirect:/login";
 	}
+
 	@GetMapping("/inicio")
 	public String cargarInicio(Model model) {
 		return "home";

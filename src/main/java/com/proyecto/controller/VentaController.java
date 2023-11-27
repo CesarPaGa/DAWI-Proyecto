@@ -1,5 +1,11 @@
 package com.proyecto.controller;
 
+import java.io.OutputStream;
+import java.util.HashMap;
+
+import javax.sql.DataSource;
+
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +18,12 @@ import com.proyecto.model.Venta;
 import com.proyecto.repository.IContenidoRepository;
 import com.proyecto.repository.IVentaRepository;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 @Controller
 @AllArgsConstructor
@@ -68,7 +78,7 @@ public class VentaController {
 
     // Reporte final
 
-    @GetMapping("/eliminarTodo")
+    @GetMapping("/todo")
     public String eliminarTodo(Model model) {
         try {
             iVentaRepository.deleteAll();
@@ -77,4 +87,30 @@ public class VentaController {
             return "redirect:/ventas";
         }
     }
+
+    private DataSource dataSource;
+
+    private ResourceLoader resourceLoader;
+
+    @GetMapping("/reporte")
+    public void reportesConFiltro(HttpServletResponse response) {
+
+        response.setHeader("Content-Disposition", "inline;");
+        //
+        response.setContentType("application/pdf");
+        try {
+            // Definir los parametros
+
+            // Carga el jasper
+            String ru = resourceLoader.getResource("classpath:reportes/resumenOrden.jasper").getURI().getPath();
+            // Combinar el .jasper con la conexion
+            JasperPrint jasperPrint = JasperFillManager.fillReport(ru, null, dataSource.getConnection());
+            OutputStream outStream = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

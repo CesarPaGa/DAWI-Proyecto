@@ -22,6 +22,25 @@ public class ContenidoController {
 	@Autowired
 	private IGeneroRepository repoGenero;
 	
+	@GetMapping("/listadoContenido")
+	public String listarContenidos(Model model) {
+		model.addAttribute("lstContenido", repoContenido.findAll());
+		
+		return "listadoContenido";
+	}
+	@GetMapping("/detalleContenido/{id}")
+	public String verDetalleContenido(@PathVariable int id, Model model) {
+	    Contenido contenido = repoContenido.findById(id).orElse(null);
+
+	    if (contenido == null) {
+	        // Manejar el caso en que no se encuentre el contenido con el ID proporcionado
+	        return "error";  // Puedes crear una página de error específica
+	    }
+
+	    model.addAttribute("contenido", contenido);
+	    return "detalleContenido";
+	}
+	
 	@GetMapping("/mantenimiento/contenido")
 	public String cargarMantContenido(Model model) {
 		model.addAttribute("contenido", new Contenido());

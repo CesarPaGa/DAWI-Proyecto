@@ -33,7 +33,7 @@ public class LoginController {
 		Usuario usu = repoUsu.findByUsuaAndClave(usuario, clave);
 		if (usu != null) {
 			model.addAttribute("Mensaje", "Bivenido " + usu.getNombres());
-			return "home";
+			return "redirect:/listadoContenido";
 		} else {
 			model.addAttribute("mensaje", "El usuario o la contraseña son incorrectos");
 			model.addAttribute("cssmensaje", "alert alert-warning m-3");

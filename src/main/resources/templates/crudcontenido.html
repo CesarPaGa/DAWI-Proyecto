@@ -55,9 +55,6 @@
         <div class="collapse navbar-collapse" id="links">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/listadoContenido">Contenidos</a>
             </li>
             <li class="nav-item dropdown">
@@ -86,25 +83,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/ventas">Ventas</a>
             </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Reportes
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <a class="dropdown-item" href="#">Peliculas</a>
-                <a class="dropdown-item" href="#">Usuarios</a>
-              </div>
-            </li>
+
           </ul>
         </div>
         <div class="collapse navbar-collapse" id="account">
@@ -264,7 +243,7 @@
             <a href="/mantenimiento/contenido" class="btn btn-primary"
               >Limpiar</a
             >
-            <a href="/reporte" class="btn btn-primary" target="_blank">PDF</a>
+            <a href="/contenido/reporte" class="btn btn-primary" target="_blank">PDF</a>
           </form>
           <div th:text="${mensaje}"></div>
         </div>

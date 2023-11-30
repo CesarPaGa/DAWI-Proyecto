@@ -8,5 +8,6 @@ import com.proyecto.model.Contenido;
 
 @Repository
 public interface IContenidoRepository extends JpaRepository<Contenido, Integer>{
+
 	
 }

@@ -1,6 +1,11 @@
 package com.proyecto.controller;
 
+import java.io.OutputStream;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.proyecto.model.Usuario;
 import com.proyecto.repository.ITipoUserRepository;
 import com.proyecto.repository.IUsuarioRepository;
+
+import jakarta.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 @Controller
 public class UsuarioController {
@@ -59,4 +69,27 @@ public class UsuarioController {
 			return "redirect:/mantenimiento/usuario";
 		}
 	}
+	@Autowired
+    private DataSource dataSource;
+	
+	@Autowired
+    private ResourceLoader resourceLoader;
+    
+    @GetMapping("/usuarios/reporte")
+    public void reportesConFiltroContenido(HttpServletResponse response) {
+
+        response.setHeader("Content-Disposition", "inline;");
+        //
+        response.setContentType("application/pdf");
+        try {
+            String ru = resourceLoader.getResource("classpath:reportes/resumenUser.jasper").getURI().getPath();
+            // Combinar el .jasper con la conexion
+            JasperPrint jasperPrint = JasperFillManager.fillReport(ru, null, dataSource.getConnection());
+            OutputStream outStream = response.getOutputStream();
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

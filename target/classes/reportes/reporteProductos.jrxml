@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteProductos" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc201ab9-81cb-4616-9dd0-5f4da18d5fe5">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[c3lzdGVtcHJveWVjdC50Yl90aXBvIEFTICwyOTIsMTc1LDI1NDM3MmE4LWViMTMtNGY2YS1iZDk1
+LWJkYTk4YWY5ODNkMDtzeXN0ZW1wcm95ZWN0LnRiX2dlbmVybyBBUyAsMjQ2LDI5LGRiNDAxM2Zk
+LWVlOWYtNDdiYy05MTZmLTc3OGJlZTY2MjA2YztzeXN0ZW1wcm95ZWN0LnRiX2NvbnRlbmlkbyBB
+UyAsNjksOTMsMzJmYzQ4YWUtOGY3NC00MDkxLWE3MDAtOWJhYWE5MGFiYjYzOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="AdapterMySql"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM systemproyect.tb_contenido
+	INNER JOIN systemproyect.tb_genero ON 
+	 systemproyect.tb_contenido.id_genero = systemproyect.tb_genero.id_genero 
+	INNER JOIN systemproyect.tb_tipo ON 
+	 systemproyect.tb_contenido.id_tipo = systemproyect.tb_tipo.id_tipo]]>
+	</queryString>
+	<field name="id_con" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_con"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_con"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="director" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="director"/>
+		<property name="com.jaspersoft.studio.field.label" value="director"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="descripcion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.label" value="descripcion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="idioma" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="idioma"/>
+		<property name="com.jaspersoft.studio.field.label" value="idioma"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="precio" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="precio"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="puntuacion" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="puntuacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="puntuacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="duracion" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="duracion"/>
+		<property name="com.jaspersoft.studio.field.label" value="duracion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="id_tipo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="id_genero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_genero"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_genero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="anio_publicacion" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="anio_publicacion"/>
+		<property name="com.jaspersoft.studio.field.label" value="anio_publicacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_contenido"/>
+	</field>
+	<field name="COLUMN_12" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_genero"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_genero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_genero"/>
+	</field>
+	<field name="genero" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="genero"/>
+		<property name="com.jaspersoft.studio.field.label" value="genero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_genero"/>
+	</field>
+	<field name="COLUMN_14" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_tipo"/>
+	</field>
+	<field name="tipo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tipo"/>
+		<property name="com.jaspersoft.studio.field.label" value="tipo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="tb_tipo"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

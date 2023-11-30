@@ -42,12 +42,10 @@
 
 			<div class="collapse navbar-collapse" id="links">
 				<ul class="navbar-nav mr-auto">
+
 					<li class="nav-item">
-						<a class="nav-link" href="/inicio">Inicio</a>
+						<a class="nav-link" href="/listadoContenido">Contenidos</a>
 					</li>
-            <li class="nav-item">
-              <a class="nav-link" href="/listadoContenido">Contenidos</a>
-            </li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">
@@ -60,16 +58,6 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/ventas">Ventas</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false">
-							Reportes
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="#">Peliculas</a>
-							<a class="dropdown-item" href="#">Usuarios</a>
-						</div>
 					</li>
 				</ul>
 			</div>
@@ -97,21 +85,31 @@
 	<div class="container mt-3">
 		<h1>Detalle de Contenido</h1>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title" th:text="${contenido.nombre}"></h5>
-            <h6 class="card-subtitle mb-2 text-muted" th:text="${contenido.director}"></h6>
-            <p class="card-text" th:text="${contenido.descripcion}"></p>
-            
-            <p class="card-text"><strong>Idioma:</strong> <span th:text="${contenido.idioma}"></span></p>
-            <p class="card-text"><strong>Precio:</strong> <span th:text="${contenido.precio}"></span></p>
-            <p class="card-text"><strong>Puntuación:</strong> <span th:text="${contenido.puntuacion}"></span></p>
-            <p class="card-text"><strong>Duración:</strong> <span th:text="${contenido.duracion}"></span></p>
-            <p class="card-text"><strong>Tipo:</strong> <span th:text="${contenido.id_tipo}"></span></p>
-            <p class="card-text"><strong>Género:</strong> <span th:text="${contenido.id_genero}"></span></p>
-            <p class="card-text"><strong>Año de publicación:</strong> <span th:text="${contenido.anio_publicacion}"></span></p>
-        </div>
-    </div>
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-8">
+						<img th:src="@{'../img/' + ${contenido.id_con} + '.png'}" width="600px" alt="Imagen" />
+					</div>
+					<div class="col-4">
+						<h5 class="card-title" th:text="${contenido.nombre}"></h5>
+						<h6 class="card-subtitle mb-2 text-muted" th:text="${contenido.director}"></h6>
+						<p class="card-text" th:text="${contenido.descripcion}"></p>
+
+						<p class="card-text"><strong>Idioma:</strong> <span th:text="${contenido.idioma}"></span></p>
+						<p class="card-text"><strong>Precio:</strong> <span th:text="${contenido.precio}"></span></p>
+						<p class="card-text"><strong>Puntuación:</strong> <span
+								th:text="${contenido.puntuacion}"></span></p>
+						<p class="card-text"><strong>Duración:</strong> <span th:text="${contenido.duracion}"></span>
+						</p>
+						<p class="card-text"><strong>Tipo:</strong> <span th:text="${contenido.id_tipo}"></span></p>
+						<p class="card-text"><strong>Género:</strong> <span th:text="${contenido.id_genero}"></span></p>
+						<p class="card-text"><strong>Año de publicación:</strong> <span
+								th:text="${contenido.anio_publicacion}"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
 	</div>
